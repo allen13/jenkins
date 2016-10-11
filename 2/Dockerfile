@@ -5,7 +5,7 @@ FROM centos:centos7
 # This image provides a Jenkins server, primarily intended for integration with
 # OpenShift v3.
 #
-# Volumes: 
+# Volumes:
 # * /var/jenkins_home
 # Environment:
 # * $JENKINS_PASSWORD - Password for the Jenkins 'admin' user.
@@ -29,7 +29,7 @@ EXPOSE 8080 50000
 RUN curl http://pkg.jenkins-ci.org/redhat-stable/jenkins.repo -o /etc/yum.repos.d/jenkins.repo && \
     rpm --import http://pkg.jenkins-ci.org/redhat-stable/jenkins-ci.org.key && \
     yum -y --setopt=tsflags=nodocs install epel-release && \
-    INSTALL_PKGS="rsync gettext git tar zip unzip java-1.8.0-openjdk java-1.8.0-openjdk-devel jenkins-2.7.3-1.1 nss_wrapper" && \
+    INSTALL_PKGS="rsync gettext git tar zip unzip java-1.8.0-openjdk java-1.8.0-openjdk-devel jenkins-2.7.3-1.1 nss_wrapper ansible" && \
     yum -y --setopt=tsflags=nodocs install $INSTALL_PKGS && \
     rpm -V $INSTALL_PKGS && \
     yum clean all  && \
